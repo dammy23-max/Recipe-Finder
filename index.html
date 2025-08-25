@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Recipe Finder with Favorites + Auth</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+</head>
+<body class="bg-green-100 bg-cover bg-center min-h-screen flex flex-col">
+
+  <!-- ================== AUTH SCREENS ================== -->
+  <!-- Signup -->
+  <section id="signupSection" class="  flex items-center justify-center flex-1 p-6">
+    <div class="bg-white/90 p-6 rounded-2xl shadow-md w-full max-w-sm">
+      <h2 class="text-2xl font-bold mb-4 text-center">Sign Up</h2>
+      <input id="signupUsername" type="text" placeholder="Username" class="w-full mb-3 px-3 py-2 border rounded">
+      <input id="signupPassword" type="password" placeholder="Password" class="w-full mb-4 px-3 py-2 border rounded">
+      <button id="signupBtn" class="w-full bg-green-600 text-white py-2 rounded">Sign Up</button>
+      <p class="mt-3 text-sm text-center">Already have an account?
+        <a href="#" id="showLogin" class="text-blue-600 underline">Login</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- Login -->
+  <section id="loginSection" class="hidden flex items-center justify-center flex-1 p-6">
+    <div class="bg-white/90 p-6 rounded-2xl shadow-md w-full max-w-sm">
+      <h2 class="text-2xl font-bold mb-4 text-center">Login</h2>
+      <input id="loginUsername" type="text" placeholder="Username" class="w-full mb-3 px-3 py-2 border rounded">
+      <input id="loginPassword" type="password" placeholder="Password" class="w-full mb-4 px-3 py-2 border rounded">
+      <button id="loginBtn" class="w-full bg-blue-600 text-white py-2 rounded">Login</button>
+      <p class="mt-3 text-sm text-center">Don't have an account?
+        <a href="#" id="showSignup" class="text-green-600 underline">Sign up</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- ================== APP ================== -->
+  <section id="appSection" class="hidden flex-1 flex flex-col">
+    <!-- Header -->
+    <header class="bg-green-500 text-white p-6 flex justify-between items-center">
+      <h1 class="text-2xl font-bold">🍳 Jemmy Recipe Finder</h1>
+      <div class="flex items-center gap-3">
+        <button id="toggleFavoritesBtn" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 transition">
+          ❤️ Favorites
+        </button>
+        <button id="logoutBtn" class="bg-white text-green-700 px-4 py-2 rounded hover:bg-gray-100 transition">
+          Logout
+        </button>
+      </div>
+    </header>
+
+    <!-- Search + Filter -->
+    <section id="searchSection" class="p-6 flex flex-col sm:flex-row gap-4 justify-center bg-white/70">
+      <input
+        id="searchInput"
+        type="text"
+        placeholder="Search recipe by name..."
+        class="px-4 py-2 border rounded w-full sm:w-64 bg-white"
+      />
+      <select
+        id="mealTypeFilter"
+        class="px-4 py-2 border rounded w-full sm:w-64 bg-green-500 text-white border-none"
+      >
+        <option value="">🍴 All Meals</option>
+        <option value="Breakfast">Breakfast</option>
+        <option value="Lunch">Lunch</option>
+        <option value="Dinner">Dinner</option>
+      </select>
+      <button
+        id="searchBtn"
+        class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 transition"
+      >
+        🔍 Search
+      </button>
+    </section>
+
+    <!-- Recipes Grid -->
+    <section id="recipesContainer" class="p-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 flex-grow overflow-auto"></section>
+  </section>
+
+  <!-- Modal -->
+  <div id="modal" class="fixed inset-0 bg-black bg-opacity-50 hidden items-center justify-center z-50">
+    <div class="bg-white p-6 rounded-lg w-11/12 md:w-2/3 lg:w-1/2 relative max-h-[90vh] overflow-y-auto">
+      <button id="closeModal" class="absolute top-3 right-3 text-gray-600 hover:text-red-500 text-xl">✖</button>
+      <div id="modalContent"></div>
+    </div>
+  </div>
+</body>
+<script src="script.js"></script>
+</html>
